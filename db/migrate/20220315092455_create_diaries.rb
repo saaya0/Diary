@@ -6,7 +6,7 @@ class CreateDiaries < ActiveRecord::Migration[5.2]
       t.string :url
       t.string :img_id
       t.string :sentence
-      t.string :learning_
+      t.string :learning_time
 
       t.timestamps
     end

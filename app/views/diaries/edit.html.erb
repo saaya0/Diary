@@ -1,0 +1,20 @@
+<h1>日記編集</h1>
+<%= form_with model:@diary, local:true do |f| %>
+  <ul>
+    <li><%= f.label :タイトル %></li>
+    <li><%= f.text_field :title %></li>
+  </ul>
+  <ul>
+    <li><%= f.label :URL %></li>
+    <li><%= f.text_field :url %></li>
+  </ul>
+  <ul>
+    <li><%= f.label :画像 %></li>
+    <li></li>
+  </ul>
+  <ul>
+    <li><%= f.label :日記文 %></li>
+    <li><%= f.text_field :sentence %></li>
+  </ul>
+  <%= f.submit "編集" %>
+<% end %>

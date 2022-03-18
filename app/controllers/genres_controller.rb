@@ -8,6 +8,7 @@ class GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
+      flash[:success] = "ジャンル登録成功しました！"
       redirect_to new_genre_path
     else
       @genres = Genre.all

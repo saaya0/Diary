@@ -1,18 +1,36 @@
-<%= link_to "学習記録", diaries_path %>
-<%= link_to "新規登録", new_diary_path %>
-<%= link_to "ジャンル新規登録", new_genre_path %>
+<%= link_to "学習記録日記", diaries_path, class: "app_title" %>
+
 <%= flash[:success] %>
 
-<h2>学習時間</h2>
-<%= (@average).floor(2) %>時間
-<h2>ジャンル一覧</h2>
-<% @genres.each do |genre| %>
-  <%= link_to genre.name, diaries_path(genre_id: genre.id) %>
-<% end %>
-<%= link_to "全部", diaries_path %>
+<div class="learning_time">
+  平均学習時間:
+  <%= (@average).floor(1) %>時間
+</div>
 
-<h2>日記一覧</h2>
-<% @diaries.each do |diary| %>
-  <%= link_to diary.title, diary_path(diary) %>
-  <%= diary.created_at %>
-<% end %>
+<div class="genre-list">
+  <div class="genre-top">
+    <div class="second-title">ジャンル検索</div>
+    <%= link_to "＋", new_genre_path, class: "plus-btn" %>
+  </div>
+  <% @genres.each do |genre| %>
+    <%= link_to genre.name, diaries_path(genre_id: genre.id), class: "genre-btn" %>
+  <% end %>
+  <%= link_to "リセット", diaries_path %>
+
+</div>
+
+<div class="diary-list">
+  <div class="diary-top">
+    <div class="second-title">日記一覧</div>
+    <%= link_to "＋", new_diary_path, class: "plus-btn" %>
+  </div>
+
+
+  <% @diaries.each do |diary| %>
+    <div class="diary-list-content">
+      <div class="diary-list-date"><%= diary.created_at.strftime("%Y/%m/%d") %></div>
+      <div class="diary-list-title"><%= link_to diary.title, diary_path(diary) %></div><br />
+    </div>
+  <% end %>
+
+</div>

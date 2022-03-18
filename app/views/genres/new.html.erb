@@ -1,4 +1,6 @@
-<h1>ジャンル登録</h1>
+<%= link_to "学習記録日記", diaries_path, class: "app_title" %>
+<%= link_to "日記一覧", diaries_path, class: "diaries-btn" %>
+
 <%= flash[:error] %>
 <%= flash[:success] %>
 <h2>ジャンル一覧</h2>
@@ -6,12 +8,12 @@
   <%= genre.name %>
   <%= link_to "削除", genre_path(genre), method: :delete, "data-confirm" => "本当に削除しますか" %>
 <% end %>
-
-<h2>ジャンル登録</h2>
 <%= form_with model:@genre, local:true do |f| %>
-  <%= f.label :ジャンル名 %>
-  <%= f.text_field :name %>
-  <%= f.submit "登録" %>
+  <div class="genre-new">
+    <%= f.text_field :name %>
+    <%= f.submit "新規登録" %>
+  </div>
 <% end %>
 
-<%= link_to "日記一覧", diaries_path %>
+
+

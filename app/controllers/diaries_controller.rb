@@ -10,7 +10,7 @@ class DiariesController < ApplicationController
       flash[:success] = "日記登録ができました。"
       redirect_to diaries_path
     else
-      flash[:error] = "タイトル(10文字以内)、日記文(200文字以内)、ジャンルは必ず入力下ください。"
+      flash[:error] = "タイトル(20文字以内)、日記文(200文字以内)、ジャンルは必ず入力下ください。"
       render :new
     end
   end

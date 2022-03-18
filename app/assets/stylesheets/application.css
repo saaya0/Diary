@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  text-align: center;
+}
+.app_title {
+  font-size: 50px;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+  font-family: Comic Sans MS;
+}
+
+.app_title:hover {
+  font-size: 52px;
+  background: linear-gradient(transparent 70%, #9eceff 90%);
+}
+
+.success {
+  color: red;
+}
+
+.error {
+color: red;
+}

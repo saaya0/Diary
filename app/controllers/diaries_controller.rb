@@ -11,7 +11,13 @@ class DiariesController < ApplicationController
   end
 
   def index
-   @diaries = Diary.all
+
+   @genres = Genre.all
+    if params[:genre_id].nil?
+      @diaries = Diary.all
+    else
+      @diaries = Diary.joins(:genre).where(genres: {id: params[:genre_id]})
+    end
   end
 
   def show
@@ -39,6 +45,6 @@ class DiariesController < ApplicationController
 
 
   def diary_params
-    params.require(:diary).permit(:title, :url, :img_id, :sentence, :learning_time)
+    params.require(:diary).permit(:title, :url, :img_id, :sentence, :learning_time, :genre_id)
   end
 end

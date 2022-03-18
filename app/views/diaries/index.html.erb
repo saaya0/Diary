@@ -1,7 +1,12 @@
-<h1>学習記録日記</h1>
+<%= link_to "学習記録", diaries_path %>
 <%= link_to "新規登録", new_diary_path %>
 <%= link_to "ジャンル新規登録", new_genre_path %>
 
+<h2>ジャンル一覧</h2>
+<% @genres.each do |genre| %>
+  <%= link_to genre.name, diaries_path(genre_id: genre.id) %>
+<% end %>
+<%= link_to "全部", diaries_path %>
 <h2>日記一覧</h2>
 <% @diaries.each do |diary| %>
   <%= link_to diary.title, diary_path(diary) %>

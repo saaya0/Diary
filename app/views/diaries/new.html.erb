@@ -5,6 +5,10 @@
     <li><%= f.text_field :title %></li>
   </ul>
   <ul>
+    <li><%= f.label :ジャンル %></li>
+    <li><%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: "選択してください") %></li>
+  </ul>
+  <ul>
     <li><%= f.label :URL %></li>
     <li><%= f.text_field :url %></li>
   </ul>

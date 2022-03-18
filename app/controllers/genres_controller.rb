@@ -6,9 +6,14 @@ class GenresController < ApplicationController
   end
 
   def create
-    genre = Genre.new(genre_params)
-    genre.save
-    redirect_to new_genre_path
+    @genre = Genre.new(genre_params)
+    if @genre.save
+      redirect_to new_genre_path
+    else
+      @genres = Genre.all
+      flash[:error] = "名前の重複、文字数（3～10文字）をご確認ください"
+      render :new
+    end
   end
 
   def destroy

@@ -1,4 +1,5 @@
 <h1>日記新規登録</h1>
+<%= flash[:error] %>
 <%= form_with model:@diary, local:true do |f| %>
   <ul>
     <li><%= f.label :タイトル %></li>
@@ -6,7 +7,7 @@
   </ul>
   <ul>
     <li><%= f.label :ジャンル %></li>
-    <li><%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: "選択してください") %></li>
+    <li><%= f.collection_select(:genre_id, Genre.all, :id, :name, { prompt: "選択してください" }) %></li>
   </ul>
   <ul>
     <li><%= f.label :URL %></li>

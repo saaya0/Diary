@@ -5,9 +5,14 @@ class DiariesController < ApplicationController
   end
 
   def create
-    diary = Diary.new(diary_params)
-    diary.save
-    redirect_to diaries_path
+    @diary = Diary.new(diary_params)
+    if @diary.save
+      flash[:success] = "日記登録ができました。"
+      redirect_to diaries_path
+    else
+      flash[:error] = "タイトル(10文字以内)、日記文(200文字以内)、ジャンルは必ず入力下ください。"
+      render :new
+    end
   end
 
   def index
@@ -45,6 +50,6 @@ class DiariesController < ApplicationController
 
 
   def diary_params
-    params.require(:diary).permit(:title, :url, :img_id, :sentence, :learning_time, :genre_id)
+    params.require(:diary).permit(:title, :url, :sentence, :learning_time, :genre_id)
   end
 end

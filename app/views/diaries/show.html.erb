@@ -3,3 +3,4 @@
 <%= @diary.sentence %>
 <%= link_to "日記編集", edit_diary_path(@diary) %>
 <%= link_to "日記一覧", diaries_path %>
+<%= link_to "日記削除", diary_path(@diary), method: :delete, "data-confirm" => "本当に削除しますか" %>

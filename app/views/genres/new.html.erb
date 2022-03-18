@@ -1,0 +1,16 @@
+<h1>ジャンル登録</h1>
+
+<h2>ジャンル一覧</h2>
+<% @genres.each do |genre| %>
+  <%= genre.name %>
+  <%= link_to "削除", genre_path(genre), method: :delete, "data-confirm" => "本当に削除しますか" %>
+<% end %>
+
+<h2>ジャンル登録</h2>
+<%= form_with model:@genre, local:true do |f| %>
+  <%= f.label :ジャンル名 %>
+  <%= f.text_field :name %>
+  <%= f.submit "登録" %>
+<% end %>
+
+<%= link_to "日記一覧", diaries_path %>

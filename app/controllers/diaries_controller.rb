@@ -16,13 +16,14 @@ class DiariesController < ApplicationController
   end
 
   def index
-
    @genres = Genre.all
     if params[:genre_id].nil?
       @diaries = Diary.all
     else
       @diaries = Diary.joins(:genre).where(genres: {id: params[:genre_id]})
     end
+    @diaries_time = Diary.all
+    @average = @diaries_time.average(:learning_time)
   end
 
   def show

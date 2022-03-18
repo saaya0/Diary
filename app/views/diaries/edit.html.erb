@@ -1,6 +1,10 @@
 <h1>日記編集</h1>
 <%= form_with model:@diary, local:true do |f| %>
   <ul>
+    <li><%= f.label :学習時間 %></li>
+    <li><%= f.text_field (:learning_time.to_i) %>時間</li>
+  </ul>
+  <ul>
     <li><%= f.label :タイトル %></li>
     <li><%= f.text_field :title %></li>
   </ul>

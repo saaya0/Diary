@@ -3,6 +3,8 @@
 <%= link_to "ジャンル新規登録", new_genre_path %>
 <%= flash[:success] %>
 
+<h2>学習時間</h2>
+<%= (@average).floor(2) %>時間
 <h2>ジャンル一覧</h2>
 <% @genres.each do |genre| %>
   <%= link_to genre.name, diaries_path(genre_id: genre.id) %>

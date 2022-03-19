@@ -1,7 +1,24 @@
-<%= @diary.title %>
-<%= @diary.url %>
-<%= @diary.sentence %>
-<%= @diary.learning_time %>時間
-<%= link_to "日記編集", edit_diary_path(@diary) %>
-<%= link_to "日記一覧", diaries_path %>
-<%= link_to "日記削除", diary_path(@diary), method: :delete, "data-confirm" => "本当に削除しますか" %>
+<%= link_to "学習記録日記", diaries_path, class: "app_title" %>
+<%= link_to "日記編集", edit_diary_path(@diary), class: "diaries-link" %>
+<%= link_to "日記一覧", diaries_path, class: "diaries-link" %>
+<%= link_to "日記削除", diary_path(@diary), method: :delete, "data-confirm" => "本当に削除しますか", class: "diaries-link" %>
+<div class="diary">
+  <ul>
+    <li class="second-title">日記詳細</li>
+  </ul>
+  <ul>
+    <li>学習時間：<%= @diary.learning_time %>時間</li>
+  </ul>
+  <ul>
+    <li>タイトル</li>
+    <li><%= @diary.title %></li>
+  </ul>
+  <ul>
+    <li>参考にしたサイト</li>
+    <li><%= @diary.url %></li>
+  </ul>
+  <ul>
+    <li>日記文</li>
+    <li><%= @diary.sentence %></li>
+  </ul>
+</div>

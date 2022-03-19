@@ -13,7 +13,7 @@ class GenresController < ApplicationController
     else
       @genres = Genre.all
       flash[:error] = "名前の重複、文字数（3～10文字）をご確認ください"
-      render :new
+      redirect_to new_genre_path
     end
   end
 

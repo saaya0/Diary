@@ -26,14 +26,56 @@ body {
 }
 
 .app_title:hover {
-  font-size: 52px;
   background: linear-gradient(transparent 70%, #9eceff 90%);
 }
 
-.success {
-  color: red;
+.success-msg {
+  color: #0000ff;
 }
 
-.error {
-color: red;
+.error-msg {
+color: #ff3838;
+}
+
+.plus-btn {
+  text-decoration: none;
+  background-color: #5f9ea0;
+  color: white;
+  font-weight: bold;
+  border-radius: 50px;
+  padding: 6px 11px;
+  margin-left: 15px;
+}
+
+.plus-btn:hover {
+  background-color: white;
+  color: #5f9ea0;
+  border: solid #5f9ea0 1px;
+}
+
+.minus-btn {
+  color: white;
+  background-color: #ff5151;
+  text-decoration: none;
+  padding: 0 3px;
+  border-radius: 3px;
+}
+
+.minus-btn:hover {
+  color: #ff3838;
+  background-color: white;
+  border: solid #ff3838 0.2px;
+}
+.create-btn {
+  color: white;
+  background-color: #0582ff;
+}
+
+.second-title {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.field_with_errors {
+  display: contents;
 }

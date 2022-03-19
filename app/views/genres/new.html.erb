@@ -1,19 +1,26 @@
 <%= link_to "学習記録日記", diaries_path, class: "app_title" %>
-<%= link_to "日記一覧", diaries_path, class: "diaries-btn" %>
+<%= link_to "日記一覧", diaries_path, class: "diaries-link" %>
 
-<%= flash[:error] %>
-<%= flash[:success] %>
-<h2>ジャンル一覧</h2>
-<% @genres.each do |genre| %>
-  <%= genre.name %>
-  <%= link_to "削除", genre_path(genre), method: :delete, "data-confirm" => "本当に削除しますか" %>
-<% end %>
+<div class="genre-list">
+  <div class="genre-top">
+    <div class="second-title">ジャンル一覧</div>
+  </div>
+  <% @genres.each do |genre| %>
+    <%= genre.name %>
+    <%= link_to "X", genre_path(genre), method: :delete, "data-confirm" => "本当に『#{genre.name}』削除しますか", class: "minus-btn" %>
+  <% end %>
+</div>
+
+
+
 <%= form_with model:@genre, local:true do |f| %>
   <div class="genre-new">
-    <%= f.text_field :name %>
-    <%= f.submit "新規登録" %>
+    <%= f.text_field :name, :size =>"20x1", placeholder: "10文字以内" %>
+    <%= f.submit "ジャンル登録", class: "create-btn" %>
   </div>
 <% end %>
+<div class="error-msg"><%= flash[:error] %></div>
+<div class="success-msg"><%= flash[:success] %></div>
 
 
 

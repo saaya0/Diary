@@ -1,11 +1,11 @@
 <%= link_to "学習記録日記", diaries_path, class: "app_title" %>
 
-<%= flash[:success] %>
-
-<div class="learning_time">
-  平均学習時間:
-  <%= (@average).floor(1) %>時間
-</div>
+<% if @average.present? %>
+  <div class="learning_time">
+    平均学習時間:
+    <%= (@average).floor(1) %>時間
+  </div>
+<% end %>
 
 <div class="genre-list">
   <div class="genre-top">
@@ -13,18 +13,18 @@
     <%= link_to "＋", new_genre_path, class: "plus-btn" %>
   </div>
   <% @genres.each do |genre| %>
-    <%= link_to genre.name, diaries_path(genre_id: genre.id), class: "genre-btn" %>
+    <%= link_to genre.name, diaries_path(genre_id: genre.id), class: "genre-link" %>
   <% end %>
   <%= link_to "リセット", diaries_path %>
-
 </div>
 
 <div class="diary-list">
-  <div class="diary-top">
+  <div class="diary-list-top">
     <div class="second-title">日記一覧</div>
     <%= link_to "＋", new_diary_path, class: "plus-btn" %>
   </div>
 
+<div class="success-msg"><%= flash[:success] %></div>
 
   <% @diaries.each do |diary| %>
     <div class="diary-list-content">

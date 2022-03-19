@@ -1,25 +1,34 @@
-<h1>日記編集</h1>
-<%= form_with model:@diary, local:true do |f| %>
-  <ul>
-    <li><%= f.label :学習時間 %></li>
-    <li><%= f.text_field (:learning_time.to_i) %>時間</li>
-  </ul>
-  <ul>
-    <li><%= f.label :タイトル %></li>
-    <li><%= f.text_field :title %></li>
-  </ul>
-  <ul>
-    <li><%= f.label :ジャンル %></li>
-    <li><%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: "選択してください") %></li>
-  </ul>
-  <ul>
-    <li><%= f.label :URL %></li>
-    <li><%= f.text_field :url %></li>
-  </ul>
-  <ul>
-    <li><%= f.label :日記文 %></li>
-    <li><%= f.text_field :sentence %></li>
-  </ul>
-  <%= f.submit "編集" %>
-<% end %>
-<%= link_to "戻る", diary_path(@diary) %>
+<%= link_to "学習記録日記", diaries_path, class: "app_title" %>
+<%= link_to "日記一覧", diaries_path, class: "diaries-link" %>
+
+<div class="diary-new">
+  <div class="diary-list-top">
+    <div class="second-title">日記編集</div>
+  </div>
+  <div class="error-msg"><%= flash[:error] %></div>
+  <%= form_with model:@diary, local:true do |f| %>
+    <ul>
+      <li><%= f.label :学習時間 %><br />(時間のみ記入してください。例:2.9時間→2時間)</li>
+      <li><%= f.text_field :learning_time, :size =>"5x1", placeholder: "半角" %>時間</li>
+    </ul>
+    <ul>
+      <li><%= f.label :タイトル %></li>
+      <li><%= f.text_field :title, :size =>"35x1", placeholder: "20文字以内" %></li>
+    </ul>
+    <ul>
+      <li><%= f.label :ジャンル %></li>
+      <li><%= f.collection_select(:genre_id, Genre.all, :id, :name, { prompt: "選択してください" }) %></li>
+    </ul>
+    <ul>
+      <li><%= f.label :URL %></li
+      <li><%= f.text_area :url, :size => "110x2", placeholder: "https://e5e..." %></li>
+    </ul>
+    <ul>
+      <li><%= f.label :日記文 %></li>
+      <li><%= f.text_area :sentence, :size => "111x9", placeholder: "500文字以内" %></li>
+    </ul>
+    <ul>
+      <%= f.submit "日記編集登録", class: "create-btn" %>
+    </ul>
+  <% end %>
+</div>

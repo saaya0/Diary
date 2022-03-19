@@ -10,7 +10,7 @@ class DiariesController < ApplicationController
       flash[:success] = "日記登録ができました。"
       redirect_to diaries_path
     else
-      flash[:error] = "タイトル(20文字以内)、日記文(200文字以内)、ジャンルは必ず入力下ください。"
+      flash[:error] = "タイトル(20文字以内)・日記文(200文字以内)・ジャンルは必須、時間は半角で入力して下さい。"
       render :new
     end
   end
@@ -18,7 +18,7 @@ class DiariesController < ApplicationController
   def index
    @genres = Genre.all
     if params[:genre_id].nil?
-      @diaries = Diary.all
+      @diaries = Diary.all.order(created_at: :DESC)
     else
       @diaries = Diary.joins(:genre).where(genres: {id: params[:genre_id]})
     end
@@ -36,8 +36,12 @@ class DiariesController < ApplicationController
 
   def update
     @diary = Diary.find(params[:id])
-    @diary.update(diary_params)
-    redirect_to diary_path(@diary)
+    if @diary.update(diary_params)
+      redirect_to diary_path(@diary)
+    else
+      flash[:error] = "タイトル(20文字以内)・日記文(200文字以内)・ジャンルは必須、時間は半角で入力して下さい。"
+      render :edit
+    end
   end
 
   def destroy

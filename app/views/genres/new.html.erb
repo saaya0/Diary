@@ -6,7 +6,7 @@
     <div class="second-title">ジャンル一覧</div>
   </div>
   <% @genres.each do |genre| %>
-    <%= genre.name %>
+    <%= "genre.name(#{genre.diaries.count})" %>
     <%= link_to "X", genre_path(genre), method: :delete, "data-confirm" => "本当に『#{genre.name}』削除しますか", class: "minus-btn" %>
   <% end %>
 </div>

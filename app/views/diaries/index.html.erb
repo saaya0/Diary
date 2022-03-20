@@ -26,9 +26,9 @@
     <%= link_to "＋", new_genre_path, class: "plus-btn" %>
   </div>
   <% @genres.each do |genre| %>
-    <%= link_to genre.name, diaries_path(genre_id: genre.id), class: "genre-link" %> <!--ジャンルリンクを押すと、そのジャンルの日記のみ表示-->
+    <%= link_to "＃#{genre.name}(#{genre.diaries.count})", diaries_path(genre_id: genre.id), class: "genre-link" %> <!--ジャンルリンクを押すと、そのジャンルの日記のみ表示-->
   <% end %>
-  <%= link_to "全日記", diaries_path %>
+  <%= link_to "全て表示", diaries_path, class: "all-btn" %>
 </div>
 
 <div class="diary-list">
@@ -49,3 +49,4 @@
     </div>
   <% end %>
 </div>
+<%= @now %>

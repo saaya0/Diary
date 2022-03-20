@@ -68,6 +68,7 @@ color: #ff3838;
   text-decoration: none;
   padding: 0 3px;
   border-radius: 3px;
+  font-size: 5px;
 }
 
 .minus-btn:hover {

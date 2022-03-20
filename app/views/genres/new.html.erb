@@ -2,7 +2,7 @@
 <%= link_to "日記一覧", diaries_path, class: "diaries-link" %>
 
 <div class="genre-list">
-  <div class="genre-top">
+  <div class="genre-label">
     <div class="second-title">ジャンル一覧</div>
   </div>
   <% @genres.each do |genre| %>
@@ -11,14 +11,13 @@
   <% end %>
 </div>
 
-
-
 <%= form_with model:@genre, local:true do |f| %>
   <div class="genre-new">
     <%= f.text_field :name, :size =>"20x1", placeholder: "10文字以内" %>
     <%= f.submit "ジャンル登録", class: "create-btn" %>
   </div>
 <% end %>
+
 <div class="error-msg"><%= flash[:error] %></div>
 <div class="success-msg"><%= flash[:success] %></div>
 

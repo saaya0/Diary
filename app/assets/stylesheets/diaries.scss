@@ -12,7 +12,7 @@
     padding: 6px;
 }
 
-.genre-list, .diary-list, .diary {
+.genre-list, .diary-list {
     font-weight: bold;
     background-color: #f5f5f5;
     border: solid #5f9ea0 1px;
@@ -21,18 +21,21 @@
     padding: 10px;
 }
 
-.genre-top, .diary-list-top {
+.diary-list {
+    margin-top: 10px;
+}
+
+.new, .edit {
+    line-height: 18px;
+}
+
+.genre-label, .diary-label {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
     margin-left: 20%;
     margin-right: 20%;
     background-color: white;
-
-}
-
-.diary-list {
-    margin-top: 10px;
 }
 
 .genre-link {
@@ -65,22 +68,12 @@
     color: #000033;
 }
 
-.genre-new {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
+.yesterday-msg {
+    padding-left: 30px;
+    margin-top: -30px;
+    background-color: red;
 }
 
 ul {
     list-style: none;
-}
-
-.diary {
-    line-height: 19px;
-}
-
-.yesterday-msg {
-    padding-left: 30px;
-    marg-top: -30px;
-    background-color: red;
 }

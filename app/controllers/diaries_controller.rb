@@ -17,14 +17,14 @@ class DiariesController < ApplicationController
 
   def index
    @genres = Genre.all
-    if params[:genre_id].nil?
+    if params[:genre_id].nil?  #日記一覧をジャンルで絞る
       @diaries = Diary.all.order(created_at: :DESC)
     else
       @diaries = Diary.joins(:genre).where(genres: {id: params[:genre_id]})
     end
     @diaries_time = Diary.all
-    @average = @diaries_time.average(:learning_time)
-    @today_diary = @diaries.created_today
+    @average = @diaries_time.average(:learning_time) #学習時間の平均
+    @today_diary = @diaries_time.created_today #今日投稿した日記
   end
 
   def show

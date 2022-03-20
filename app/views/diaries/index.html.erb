@@ -2,12 +2,12 @@
 
 <% if @average.present? %>
   <div class="learning_time">
-    平均学習時間:
- ⊕
+    平均学習：<%= @average %>時間
   </div>
 <% end %>
-<div class="diary-today-msg">
-  <% if @today_diary.count == 0 %>
+
+<div>
+  <% if @today_diary.count == 0 %> <!--今日投稿したか-->
   　日記⊕を押して投稿してね！
   <% else %>
     明日も投稿してね！
@@ -15,25 +15,26 @@
 </div>
 
 <div class="genre-list">
-  <div class="genre-top">
+  <div class="genre-label">
     <div class="second-title">ジャンル検索</div>
     <%= link_to "＋", new_genre_path, class: "plus-btn" %>
   </div>
   <% @genres.each do |genre| %>
-    <%= link_to genre.name, diaries_path(genre_id: genre.id), class: "genre-link" %>
+    <%= link_to genre.name, diaries_path(genre_id: genre.id), class: "genre-link" %> <!--ジャンルリンクを押すと、そのジャンルの日記のみ表示-->
   <% end %>
   <%= link_to "リセット", diaries_path %>
 </div>
 
 <div class="diary-list">
-  <div class="diary-list-top">
+  <div class="diary-label">
     <div class="second-title">日記一覧</div>
-    <% if @today_diary.count == 0 %>
+    <% if @today_diary.count == 0 %> <!--今日投稿していない場合、新規登録ボタン表示-->
       <%= link_to "＋", new_diary_path, class: "plus-btn" %>
     <% end %>
   </div>
 
-<div class="success-msg"><%= flash[:success] %></div>
+  <div class="success-msg"><%= flash[:success] %></div>
+
   <% @diaries.each do |diary| %>
     <div class="diary-list-content">
       <div class="diary-list-date"><%= diary.created_at.strftime("%Y/%m/%d") %></div>

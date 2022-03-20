@@ -17,6 +17,8 @@
 body {
   text-align: center;
 }
+
+/*タイトル類*/
 .app_title {
   font-size: 50px;
   font-weight: bold;
@@ -29,6 +31,12 @@ body {
   background: linear-gradient(transparent 70%, #9eceff 90%);
 }
 
+.second-title {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+/*フラッシュメッセージ*/
 .success-msg {
   color: #0000ff;
 }
@@ -37,6 +45,7 @@ body {
 color: #ff3838;
 }
 
+/*ボタン類*/
 .plus-btn {
   text-decoration: none;
   background-color: #5f9ea0;
@@ -71,11 +80,8 @@ color: #ff3838;
   background-color: #0582ff;
 }
 
-.second-title {
-  font-size: 25px;
-  font-weight: bold;
-}
 
+/*render時のレイアウト修正用*/
 .field_with_errors {
   display: contents;
 }

@@ -6,8 +6,20 @@ class DiariesController < ApplicationController
 
   def create
     @diary = Diary.new(diary_params)
-    if @diary.save
-      flash[:success] = "日記登録ができました。"
+    if @diary.save #勉強時間によってポイント数変更
+      if @diary.learning_time.to_i >= 10
+        @diary.point = 5.to_s
+      elsif @diary.learning_time.to_i < 10 && @diary.learning_time.to_i > 6
+        @diary.point = 4.to_s
+      elsif @diary.learning_time.to_i == 6 || @diary.learning_time.to_i == 5
+        @diary.point = 3.to_s
+      elsif @diary.learning_time.to_i == 4 || @diary.learning_time.to_i == 3
+        @diary.point = 2.to_s
+      else
+        @diary.point = 1.to_s
+      end
+      @diary.save
+      flash[:success] = "日記登録ができました。 #{@diary.point}ポイント獲得！"
       redirect_to diaries_path
     else
       flash[:error] = "タイトル(20文字以内)・日記文(200文字以内)・ジャンルは必須、時間は半角で入力して下さい。"
@@ -24,6 +36,7 @@ class DiariesController < ApplicationController
     end
     @diaries_time = Diary.all
     @average = @diaries_time.average(:learning_time) #学習時間の平均
+    @sum = @diaries_time.sum(:point)
     @today_diary = @diaries_time.created_today #今日投稿した日記
   end
 

@@ -6,6 +6,12 @@
   </div>
 <% end %>
 
+<% if @sum.present? %>
+  <div class="point">
+    ポイント：<%= @sum %>P
+  </div>
+<% end %>
+
 <div>
   <% if @today_diary.count == 0 %> <!--今日投稿したか-->
   　日記⊕を押して投稿してね！

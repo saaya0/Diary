@@ -5,7 +5,17 @@
 .learning_time {
     position: absolute;
     top: 30px;
-    left: 65%;
+    left: 63%;
+    background-color: #add8e6;
+    border: double lightcyan;
+    border-radius: 30px;
+    padding: 6px;
+}
+
+.point {
+    position: absolute;
+    top: 30px;
+    left: 77%;
     background-color: #add8e6;
     border: double lightcyan;
     border-radius: 30px;

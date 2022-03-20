@@ -13,11 +13,12 @@
 ActiveRecord::Schema.define(version: 2022_03_15_092455) do
 
   create_table "diaries", force: :cascade do |t|
-    t.integer "genre_id"
+    t.integer "genre_id", null: false
     t.string "title", null: false
     t.string "url"
     t.string "sentence"
     t.string "learning_time"
+    t.integer "point"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -27,4 +28,5 @@ ActiveRecord::Schema.define(version: 2022_03_15_092455) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
 end

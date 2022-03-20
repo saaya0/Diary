@@ -11,7 +11,8 @@
 
   <%= form_with model:@diary, local:true do |f| %>
     <ul>
-      <li><%= f.label :学習時間 %>：<%= @diary.learning_time %>時間</li>
+      <li><%= f.label :学習時間 %><br /></li>
+      <li><%= f.text_field :learning_time, :size =>"5x1", placeholder: "半角" %>時間</li>
     </ul>
     <ul>
       <li><%= f.label :タイトル %></li>

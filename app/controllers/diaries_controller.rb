@@ -1,7 +1,14 @@
 class DiariesController < ApplicationController
 
   def new
-    @diary = Diary.new
+    diaries = Diary.all
+    today_diary = diaries.created_today
+    if today_diary.count == 0
+      @diary = Diary.new
+    else
+      flash[:error] = "１日１投稿となります。"
+      redirect_to diaries_path
+    end
   end
 
   def create
@@ -50,7 +57,20 @@ class DiariesController < ApplicationController
 
   def update
     @diary = Diary.find(params[:id])
-    if @diary.update(diary_params)
+    if @diary.update(diary_params) #勉強時間によってポイント数変更
+      if @diary.learning_time.to_i >= 10
+        @diary.point = 5.to_s
+      elsif @diary.learning_time.to_i < 10 && @diary.learning_time.to_i > 6
+        @diary.point = 4.to_s
+      elsif @diary.learning_time.to_i == 6 || @diary.learning_time.to_i == 5
+        @diary.point = 3.to_s
+      elsif @diary.learning_time.to_i == 4 || @diary.learning_time.to_i == 3
+        @diary.point = 2.to_s
+      else
+        @diary.point = 1.to_s
+      end
+      @diary.update(diary_params)
+      flash[:success] = "日記変更しました。"
       redirect_to diary_path(@diary)
     else
       flash[:error] = "タイトル(20文字以内)・日記文(200文字以内)・ジャンルは必須、時間は半角で入力して下さい。"

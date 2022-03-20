@@ -28,7 +28,7 @@
   <% @genres.each do |genre| %>
     <%= link_to genre.name, diaries_path(genre_id: genre.id), class: "genre-link" %> <!--ジャンルリンクを押すと、そのジャンルの日記のみ表示-->
   <% end %>
-  <%= link_to "リセット", diaries_path %>
+  <%= link_to "全日記", diaries_path %>
 </div>
 
 <div class="diary-list">
@@ -40,6 +40,7 @@
   </div>
 
   <div class="success-msg"><%= flash[:success] %></div>
+  <div class="error-msg"><%= flash[:error] %></div>
 
   <% @diaries.each do |diary| %>
     <div class="diary-list-content">

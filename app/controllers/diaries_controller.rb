@@ -24,6 +24,7 @@ class DiariesController < ApplicationController
     end
     @diaries_time = Diary.all
     @average = @diaries_time.average(:learning_time)
+    @today_diary = @diaries.created_today
   end
 
   def show

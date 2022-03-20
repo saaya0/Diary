@@ -7,10 +7,12 @@
   </div>
   <div class="error-msg"><%= flash[:error] %></div>
   <%= form_with model:@diary, local:true do |f| %>
-    <ul>
-      <li><%= f.label :学習時間 %><br />(時間のみ記入してください。例:2.9時間→2時間)</li>
-      <li><%= f.text_field :learning_time, :size =>"5x1", placeholder: "半角" %>時間</li>
-    </ul>
+    
+      <ul>
+        <li><%= f.label :学習時間 %><br />(時間のみ記入してください。例:2.9時間→2時間)</li>
+        <li><%= f.text_field :learning_time, :size =>"5x1", placeholder: "半角" %>時間</li>
+      </ul>
+    
     <ul>
       <li><%= f.label :タイトル %></li>
       <li><%= f.text_field :title, :size =>"35x1", placeholder: "20文字以内" %></li>
